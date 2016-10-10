@@ -1,0 +1,29 @@
+# Header
+menu:
+  Home: /
+  "What's New": /whatsnew
+  "Jeopardy Statistics": /jeopardy
+  "Pilgrim Statistics": /pilgrims
+  Links: /links
+  Blog: /blog
+  "Travel Blogs": /wcBlogs
+  About: /about
+
+# Content
+rss: /atom.xml
+excerpt_link: Read More
+fancybox: true
+#favicon: favicon.ico
+#subtitle:
+
+sidebar: false
+index_widgets:
+
+# Miscellaneous
+google_analytics: UA-7726174-1
+gauges_analytics:
+favicon: /favicon.png
+twitter:
+google_plus:
+fb_admins:
+fb_app_id:

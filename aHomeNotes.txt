@@ -1,0 +1,8 @@
+*** Changes to "landscape" theme
+-- _partial/footer.ejs: removed footer, left bottom sidebar in
+-- _partial/head.ejs: added three css files:
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+<%- css('site') %>
+
+*** how themes work ***
