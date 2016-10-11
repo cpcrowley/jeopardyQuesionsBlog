@@ -1,13 +1,14 @@
 # Header
 menu:
-  Home: /
-  "What's New": /whatsnew
-  "Jeopardy Statistics": /jeopardy
-  "Pilgrim Statistics": /pilgrims
-  Links: /links
-  Blog: /blog
-  "Travel Blogs": /wcBlogs
-  About: /about
+  "Home": /
+  "Percent Correct": /percentCorrect
+  "Players": /players
+  "Number of Games": /numberOfGames
+  "Final Jeopardy": /finalJeopardy
+  "Categories": /categories
+  "Seasons": /seasonsAndYears
+  "Search Clues": /wordsInClues
+  "About": /about
 
 # Content
 rss: /atom.xml
@@ -16,7 +17,15 @@ fancybox: true
 #favicon: favicon.ico
 #subtitle:
 
-sidebar: false
+# Sidebar, can be 'bottom', 'right', 'left', or false
+sidebar: right
+# we could add new widget types into layout/_partual/_widget directory
+widgets:
+- recent_posts
+- archive
+- tagcloud
+- tag
+- category
 index_widgets:
 
 # Miscellaneous
