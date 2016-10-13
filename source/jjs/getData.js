@@ -13,7 +13,7 @@ var dataStore = {
   'c1data.json': {state:'not fetched', mbSize:0.4, data:null},
   'c2data.json': {state:'not fetched', mbSize:0.4, data:null},
   'c3data.json': {state:'not fetched', mbSize:0.4, data:null},
-  'cdata.json': {state:'not fetched', mbSize:0.4, data:null},
+  'cdata.json': {state:'fetching', mbSize:0.4, data:null},
   'clueStrings.json': {state:'not fetched', mbSize:29.3, data:null},
   'answerStrings.json': {state:'not fetched', mbSize:5.4, data:null},
   'categoryStrings.json': {state:'not fetched', mbSize:1.5, data:null}

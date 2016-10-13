@@ -42,7 +42,7 @@ QQ.finalJeopardy = function(pane, gameType) {
 
   //----------------------------------------------------------------------------
   //----------------------------------------------------------------------------
-  var html = '<div class="table-responsive results-div"><h1>NEW VERSION</h1>'
+  var html = '<div class="table-responsive results-div">'
 
   var finalData = cdata.sAllFinalData
   switch (gameType) {
@@ -117,7 +117,7 @@ QQ.finalJeopardy = function(pane, gameType) {
   html += '</tbody></table>';
   html += notes()
   html += '</div>';
-  pane.form.append(html)
+  pane.empty().append(html)
   $('#lock-table').dataTable({
     "order": [[1, 'desc']]
 })

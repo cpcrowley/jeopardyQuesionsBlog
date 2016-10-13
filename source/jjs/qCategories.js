@@ -19,6 +19,7 @@ var notes = function() {
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
 QQ.categories = function(pane, maxCategories) {
+  console.log('pane', pane)
   var html
   var categoryStrings = QQ.getData('categoryStrings.json')
   if (!categoryStrings) {
@@ -26,7 +27,10 @@ QQ.categories = function(pane, maxCategories) {
     '<div id="loading-info-box" class="jumbotron alert-warning">' +
     '<h3>Category data downloading. Try again in a few seconds.</h3>' +
     '</div></div>'
-    pane.form.append(html)
+    console.log('pane', pane)
+    pane.empty()
+    console.log('pane', pane)
+    pane.append(html)
     return
   }
   html = '<div class="results-div">' +
@@ -67,7 +71,7 @@ QQ.categories = function(pane, maxCategories) {
   html += '</tbody></table>';
   html += notes()
   html += '</div>'
-  pane.form.append(html)
+  pane.empty().append(html)
   $('#category-table').dataTable({
     "order": [[1, 'desc']]
   })

@@ -80,6 +80,11 @@ var formatPercentCorrectRow = function(gameType, fromSeason, toSeason, dailyDoub
 
   for (var seasonIndex = fromSeason; seasonIndex < (toSeason+1); ++seasonIndex) {
     var season = 's'+seasonIndex
+    //console.log('season='+season)
+    //console.log('cdata', cdata)
+    //console.log('cdata.s1', cdata.s1)
+    //console.log('cdata[s1]', cdata['s1'])
+    //console.log('cdata[season]', cdata[season])
     addRoundDataToTotals(totals, cdata[season])
     if (gameType) {
       addRoundDataToTotals(totals0, c0data[season])
@@ -160,7 +165,7 @@ var makeChart = function(graphData) {
       height: 400
     }
     dataTable = new google.visualization.arrayToDataTable(_.zip.apply(_, graphData))
-    console.log('dataIn', _.zip.apply(_, graphData), graphData)
+    //console.log('dataIn', _.zip.apply(_, graphData), graphData)
     chart = new google.charts.Bar(element)
   } else {
     options = {
@@ -176,15 +181,15 @@ var makeChart = function(graphData) {
 //------------------------------------------------------------------------------
 QQ.percentCorrect = function(pane, gameType, ranges, dailyDoubles, byround, ooAlso)
 {
-  var cdata = QQ.getData('cdata.json')
+  cdata = QQ.getData('cdata.json')
   if (!cdata) {
     console.log('***** percentCorrect: cData not ready')
     return
   }
-  var c0data = QQ.getData('c0data.json')
-  var c1data = QQ.getData('c1data.json')
-  var c2data = QQ.getData('c2data.json')
-  var c3data = QQ.getData('c3data.json')
+  c0data = QQ.getData('c0data.json')
+  c1data = QQ.getData('c1data.json')
+  c2data = QQ.getData('c2data.json')
+  c3data = QQ.getData('c3data.json')
 
   graphData = [['Round', '$200', '$400', '$600', '$800', '$1000', 'All']]
 
@@ -240,10 +245,10 @@ QQ.percentCorrect = function(pane, gameType, ranges, dailyDoubles, byround, ooAl
   html += '<div id="chart1"></div>'
   html += notes()
   html += '</div>'
-  pane.form.append(html)
+  pane.empty().append(html)
   graphData = _.zip.apply(_, graphData)
   var delay = 0
   // Wait a little longer for Google Charts to load.
-  if (!google.visualization.arrayToDataTable) delay = 2000
+  if (!google || !google.visualization || !google.visualization.arrayToDataTable) delay = 2000
   setTimeout(function(){makeChart(graphData)}, delay)
 }

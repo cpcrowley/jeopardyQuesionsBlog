@@ -1,0 +1,23 @@
+# Header
+menu:
+  Home: /
+  Archives: /archives
+  "Percent Correct": /percentCorrect
+  "Players": /players
+  "Number of Games": /numberOfGames
+  "Final Jeopardy": /finalJeopardy
+  "Categories": /categories
+  "Seasons": /seasonsAndYears
+  "Search Clues": /wordsInClues
+  "About": /about
+
+# Read More text
+excerpt_link: Read More
+# Disqus Comments Shortname
+disqus_shortname: klugjoTest
+# Google Analytics Tracking ID
+google_analytics: UA-83746351-2
+# Widgets List
+widgets:
+  about: This blog is based off the official bootstrap blog template. Checkout the corresponding tutorial at <a href="http://www.codeblocq.com">http://www.codeblocq.com</a
+  tags: true

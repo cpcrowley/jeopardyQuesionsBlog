@@ -80,5 +80,5 @@ QQ.winsByPlayer = function(pane, gameType) {
   html += '</table>';
   html += notes()
   html += '</div>'
-  pane.form.append(html)
+  pane.empty().append(html)
 };

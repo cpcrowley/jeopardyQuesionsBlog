@@ -60,5 +60,5 @@ QQ.findInClues = function(pane, ss) {
   var header = '<div class="results-div"><h4>Found "'+ss+'" in '+clueHits+
   ' clues and '+answerHits+' answers (of '+numClues+')</h4>'
   ret += notes()
-  pane.form.append(header + ret + '</div>')
+  pane.empty().append(header + ret + '</div>')
 };

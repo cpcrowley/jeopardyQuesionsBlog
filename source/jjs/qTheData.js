@@ -73,7 +73,7 @@ QQ.theData = function(pane) {
   html += '</tbody></table>';
   html += notes()
   html += '</div>'
-  pane.form.append(html)
+  pane.empty().append(html)
   $('#the-data-table').dataTable({
     "order": [[0, 'desc']]
   })

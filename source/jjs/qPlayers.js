@@ -91,7 +91,7 @@ QQ.analyzePlayers = function(pane, gameType, numberOfGames) {
   html += '</tbody></table>';
   html += notes()
   html += '</div>'
-  pane.form.append(html)
+  pane.empty().append(html)
   $('#players-table').dataTable({
     "order": [[1, 'desc']]
   })

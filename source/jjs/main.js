@@ -106,7 +106,7 @@ var recomputePane = function(tag) {
   if (!pane.form) {
     pane.form = $(QQ.createForm(pane))
     pane.form.hide()
-    var container = $('#'+pane.filename)
+    var container = $('#main')
     container.empty().append(pane.form)
     console.log(pane.filename, container[0])
   }
@@ -134,36 +134,94 @@ var recomputePane = function(tag) {
 
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
+var waitFor = function(filename, interval, doAfter) {
+  if (QQ.getData(filename) !== null) {
+    doAfter()
+  } else {
+    setTimeout(function(){waitFor(filename, interval, doAfter)}, interval)
+  }
+}
+
+//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
+var changeBannerAfterInterval = function(imageName, textColor, interval) {
+  setTimeout(function() {
+    var css1 = '#banner {background-image: url("/css/images/' + imageName + '");}'
+    var css2 = '.main-nav-link {color: ' + textColor + ';font-weight:bold;}'
+    $('body').append('<style>'+
+    css1+
+    css2+
+    '</style>')
+  }, interval)
+}
+
+//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 var initTabs = function() {
-  //recomputePane('qCategories')
-  //recomputePane('qPercentCorrect')
-  //recomputePane('qPlayers')
-  //recomputePane('qNumberOfGames')
-  recomputePane('qFinalJeopardy')
-  //recomputePane('qTheData')
-  //recomputePane('qFindInClues')
+  var parts = window.location.href.split('/')
+  var paneName = 'none'
+  var l = parts.length
+  if (parts.length > 1) paneName = parts[l-2]
+  var mainSection = $('.article-entry')
+  //console.log('mainSection', mainSection)
+  var imageChangeInterval = 1000
+  switch (paneName) {
+
+    case 'categories':
+    //changeBannerAfterInterval('categories.png', '#0f0', imageChangeInterval)
+    waitFor('categoryStrings.json', 100, function(){
+      QQ.categories(mainSection, 20)
+    })
+    break;
+
+    case 'players':
+    //changeBannerAfterInterval('kenWatsonBrad.jpeg', '#0f0', imageChangeInterval)
+    QQ.analyzePlayers(mainSection, 0, 10)
+    break;
+
+    case 'finalJeopardy':
+    //changeBannerAfterInterval('finalJeopardy.jpeg', '#000', imageChangeInterval)
+    QQ.finalJeopardy(mainSection, 0)
+    break;
+
+    case 'numberOfGames':
+    //changeBannerAfterInterval('kenWatsonBrad.jpeg', '#0f0', imageChangeInterval)
+    QQ.winsByPlayer(mainSection, 0)
+    break;
+
+    case 'seasonsAndYears':
+    //changeBannerAfterInterval('jeopardy.png', '#0f0', imageChangeInterval)
+    QQ.theData(mainSection)
+    break;
+
+    case 'wordsInClues':
+    //changeBannerAfterInterval('wordsInClues.jpeg', '#0f0', imageChangeInterval)
+    QQ.getData('categoryStrings.json')
+    waitFor('answerStrings.json', 100, function(){
+      QQ.findInClues(mainSection, 'Albuquerque')
+    })
+    break;
+
+    case 'percentCorrect':
+    //changeBannerAfterInterval('percentCorrect.jpeg', '#00f', imageChangeInterval)
+    QQ.percentCorrect(mainSection, 0, 99, 1, 0, 0)
+    break;
+
+    default:
+    //changeBannerAfterInterval('jeopardyHome.jpeg', '#fff', imageChangeInterval)
+    break
+  }
 }
 
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
 var initCallbacks = function() {
-  //google.charts.load('current', {'packages':['corechart', 'line', 'bar']});
-  //QQ.getData('cdata.json')
+  google.charts.load('current', {'packages':['corechart', 'line', 'bar']});
   QQ.getData('c0data.json')
   QQ.getData('c1data.json')
   QQ.getData('c2data.json')
   QQ.getData('c3data.json')
   QQ.getData('categoryStrings.json')
-  var steps = 1;
-  function checkForData() {
-    if (!QQ.getData('cdata.json')) {
-      ++steps
-      setTimeout(checkForData, 100)
-    } else {
-      console.log('VALID cdata after '+(steps/10).toFixed(1)+'ms')
-      initTabs()
-    }
-  }
-  setTimeout(checkForData, 100)
+  waitFor('cdata.json', 100, initTabs)
 }
 $(initCallbacks)

@@ -1,0 +1,21 @@
+<html>
+<%- partial('_partial/head') %><!-- Head tag -->
+<body>
+  <%- partial('_partial/menu') %><!-- Menu -->
+  <div class="container">
+    <%- partial('_partial/header') %><!-- Blog Header: title and subtitle -->
+    <div class="row">
+      <!-- Main Content -->
+      <div class="col-sm-8 blog-main">
+        <%- body %>
+      </div>
+      <!-- Sidebar -->
+      <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+        <%- partial('_partial/sidebar') %>
+      </div>
+    </div>
+  </div>
+  <%- partial('_partial/footer') %><!-- Footer -->
+  <%- partial('_partial/after-footer') %><!-- After footer scripts -->
+</body>
+</html>

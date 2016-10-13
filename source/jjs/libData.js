@@ -149,8 +149,8 @@ QQ.makeRoundResults = function(t) {
 //------------------------------------------------------------------------------
 QQ.makeSeasonResults = function() {
   return {
-    r1:makeRoundResults('r1'),
-    r2:makeRoundResults('r2'),
+    r1:QQ.makeRoundResults('r1'),
+    r2:QQ.makeRoundResults('r2'),
     final:{
       rights: 0,
       wrongs: 0,
@@ -164,7 +164,7 @@ QQ.initializeResults = function() {
   var results = {}
   for (var season = 1; season < 33; ++season) {
     var seasonIndex = 's' + season
-    results[seasonIndex] = makeSeasonResults()
+    results[seasonIndex] = QQ.makeSeasonResults()
   }
   return results
 }
