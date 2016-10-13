@@ -28,6 +28,7 @@ function processCData() {
       if (_.isNumber(objValue)) return objValue + srcValue
     })
     convertPlayersToObjects(c99data)
+    console.log('c99data.players["Seth Wilson"]', c99data.players['Seth Wilson'])
     convertPlayersToObjects(c0data)
     convertPlayersToObjects(c1data)
     convertPlayersToObjects(c2data)
@@ -35,7 +36,7 @@ function processCData() {
     dataStore['cdata.json'].data = c99data
     dataStore['cdata.json'].state = 'valid'
     console.log('ALL DATA FETCHED. cData is valid')
-  }
+  } else console.log('processCData: STILL WAITING for all the cdata')
 }
 
 QQ.getData = function(fileName) {

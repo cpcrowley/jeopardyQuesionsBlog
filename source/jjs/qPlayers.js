@@ -60,6 +60,8 @@ QQ.analyzePlayers = function(pane, gameType, numberOfGames) {
   _.forEach(ths, function(th){ html += `<th>${th}</th>` })
   html += '</tr></thead><tbody>';
 
+  console.log('QQ.analyzePlayers: dataToUse.players["Seth Wilson"]', dataToUse.players["Seth Wilson"])
+
   _.forEach(dataToUse.players, function(playerInfo) {
     if (playerInfo.games >= numberOfGames) {
       var games = playerInfo.games
