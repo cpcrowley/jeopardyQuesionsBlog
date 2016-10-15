@@ -1,112 +1,58 @@
 title: Final Jeopardy
 layout: jpage
 ---
-<h1>SAMPLE OUTPUT</h1>
-<div id="qCategories">
-  <div class="table-responsive results-div">
-    <table class="table table-bordered">
-      <thead>
-        <tr class="color-table-top-label">
-          <th>&nbsp;</th>
-          <th>First</th>
-          <th>Second</th>
-          <th>Third</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="text-align-left">% final win by place after double jeopardy, including locks</td>
-          <td>74%</td>
-          <td>20%</td>
-          <td>6%</td>
-        </tr>
-        <tr>
-          <td class="text-align-left">% final win by place after double jeopardy, NOT a lock</td>
-          <td>65%</td>
-          <td>27%</td>
-          <td>8%</td>
-        </tr>
-        <tr>
-          <td class="text-align-left">% final win by podium position (Champion is first, challengers second and third)</td>
-          <td>26%</td>
-          <td>28%</td>
-          <td>46%</td>
-        </tr>
-        <tr>
-          <td class="text-align-left">Average score after double jeopardy</td>
-          <td>$14393</td>
-          <td>$8879</td>
-          <td>$4675</td>
-        </tr>
-        <tr>
-          <td class="text-align-left">Average final score</td>
-          <td>$16799</td>
-          <td>$8794</td>
-          <td>$2962</td>
-        </tr>
-        <tr>
-          <td class="text-align-left">% locks by any player</td>
-          <td>27%</td>
-          <td></td>
-          <td></td>
-        </tr>
-      </tbody>
-    </table>
-    <table id="lock-table" class="table table-bordered table-striped">
-      <thead>
-        <tr class="color-table-top-label">
-          <th>Player</th>
-          <th>Locks</th>
-          <th>Games</th>
-          <th>% locks</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="color-table-body">
-          <td class="color-table-side-label">Greg Hopkins</td>
-          <td>1</td>
-          <td>2</td>
-          <td>50%</td>
-        </tr>
-        <tr class="color-table-body">
-          <td class="color-table-side-label">Lorrie Farrely</td>
-          <td>1</td>
-          <td>1</td>
-          <td>100%</td>
-        </tr>
-        <tr class="color-table-body">
-          <td class="color-table-side-label">Larry Caplan</td>
-          <td>1</td>
-          <td>3</td>
-          <td>33%</td>
-        </tr>
-        <tr class="color-table-body">
-          <td class="color-table-side-label">Elise Beraru</td>
-          <td>5</td>
-          <td>7</td>
-          <td>71%</td>
-        </tr>
-        <tr class="color-table-body">
-          <td class="color-table-side-label">Diane McCain</td>
-          <td>1</td>
-          <td>1</td>
-          <td>100%</td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="observations-list-title">Observations about the statistics</div>
-    <div class="observations-body">
-      <ul>
-        <li><span class="observation-title">The leader usually wins.</span><br/> The dollar leader going into final jeopardy wins 74% of the time, 65% if there is not a lock. The player in third only has an 8% chance of winning even if there is not a
-          lock.
-        </li>
-        <li><span class="observation-title">Locks.</span><br/> Sometimes the leaer has a <em>lock</em>, that is, more than twice as much money as the second place player, so a low bet will guarantee a win no matter how final jeopardy comes out. The leader
-          has a lock 27% of the time.
-        </li>
-        <li><span class="observation-title">Brad Rutter.</span><br/> Brad Rutter played in the era when you could only play five regular games and then you had to quit. He has since played in 23 tournament games an done very well, with 7 locks in those
-          23 games, against tournament quality players.
-        </li>
-      </ul>
-    </div>
+<form class="form-horizontal" role="form">
+  <div class="form-group">
+    <span class="form-label" style="margin:0 10px">Games to use</span>
+    <select id="final-games-type" name="player" class="player">
+      <option selected="" value="99">All games</option>
+      <option value="0">Regular games only</option>
+      <option value="1">Tournament games only</option>
+      <option value="2">Celebrity games only</option>
+      <option value="3">School games only</option>
+    </select>
   </div>
+</form>
+<div class="table-responsive results-div">
+  <table class="place-table table table-bordered">
+    <thead>
+      <tr class="color-table-top-label">
+        <th>&nbsp;</th>
+        <th>First</th><th>Second</th>
+        <th>Third</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+  <table class="lock-table table table-bordered table-striped">
+    <thead>
+      <tr class="color-table-top-label">
+        <th>Player</th>
+        <th>Locks</th><th>Games</th>
+        <th>% locks</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
 </div>
+<div class="article-title">Observations about the statistics</div>
+<article class="archive-article"><div class="archive-article-inner">
+  <header class="archive-article-title">The leader usually wins</header>
+  The dollar leader going into final jeopardy wins 74% of the time, 65% if there is not a lock.
+  The player in third only has an 8% chance of winning even if there is not a lock.
+</div></article>
+<article class="archive-article"><div class="archive-article-inner">
+  <header class="archive-article-title">Locks</header>
+  Sometimes the leaer has a <em>lock</em>, that is,
+  more than twice as much money as the second place player,
+  so a low bet will guarantee a win no matter how final jeopardy comes out.
+  The leader has a lock 27% of the time.
+</div></article>
+<article class="archive-article"><div class="archive-article-inner">
+  <header class="archive-article-title">Brad Rutter</header>
+  Brad Rutter played in the era when you could only play five regular games and then you had to quit.
+  He has since played in 23 tournament games an done very well,
+  with 7 locks in those 23 games, against tournament quality players.
+</div></article>

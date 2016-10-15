@@ -1,112 +1,77 @@
 title: Players
 layout: jpage
 ---
-<h1>SAMPLE OUTPUT</h1>
+<form class="form-horizontal" role="form">
+  <div class="form-group">
+    <span class="form-label" style="margin:0 10px">Games to use</span>
+    <select id="games-to-use" name="games-to-use" class="games-to-use">
+      <option selected="" value="99">All games</option>
+      <option value="0">Regular games only</option>
+      <option value="1">Tournament games only</option>
+      <option value="2">Celebrity games only</option>
+      <option value="3">School games only</option>
+    </select>
+    <span class="form-label" style="margin:0 10px">Number of games</span>
+    <select id="number-of-games" name="number-of-games" class="number-of-games">
+      <option selected="" value="10">10 or more</option>
+      <option value="5">5 or more</option>
+      <option value="1">1 or more</option>
+    </select>
+  </div>
+</form>
+
 <div class="table-responsive results-div">
-    <table id="players-table" class="table table-bordered table-striped">
-        <thead>
-            <tr class="color-table-top-label">
-                <th>&nbsp;</th>
-                <th>&nbsp;</th>
-                <th colspan="4">All Clues</th>
-                <th colspan="5">Daily Doubles</th>
-            </tr>
-            <tr class="color-table-top-label">
-                <th>Player</th>
-                <th>Games</th>
-                <th>Total</th>
-                <th>% right</th>
-                <th>right/game</th>
-                <th>clues/game</th>
-                <th>Total</th>
-                <th>% right</th>
-                <th>DD/game</th>
-                <th>won/game</th>
-                <th>lost/game</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td class="text-align-left color-table-side-label">Chuck Forrest</td>
-                <td>16</td>
-                <td>385</td>
-                <td>94.0</td>
-                <td>22.6</td>
-                <td>24.1</td>
-                <td>15</td>
-                <td>73.3</td>
-                <td>0.9</td>
-                <td>$1138</td>
-                <td>$163</td>
-            </tr>
-            <tr>
-                <td class="text-align-left color-table-side-label">Paul Rouffa</td>
-                <td>10</td>
-                <td>241</td>
-                <td>83.0</td>
-                <td>20.0</td>
-                <td>24.1</td>
-                <td>14</td>
-                <td>64.3</td>
-                <td>1.4</td>
-                <td>$910</td>
-                <td>$620</td>
-            </tr>
-            <tr>
-                <td class="text-align-left color-table-side-label">Dave Traini</td>
-                <td>10</td>
-                <td>214</td>
-                <td>83.6</td>
-                <td>17.9</td>
-                <td>21.4</td>
-                <td>10</td>
-                <td>70.0</td>
-                <td>1.0</td>
-                <td>$2018</td>
-                <td>$210</td>
-            </tr>
-            <tr>
-                <td class="text-align-left color-table-side-label">Bob Verini</td>
-                <td>18</td>
-                <td>448</td>
-                <td>82.8</td>
-                <td>20.6</td>
-                <td>24.9</td>
-                <td>25</td>
-                <td>60.0</td>
-                <td>1.4</td>
-                <td>$1978</td>
-                <td>$1322</td>
-            </tr>
-            <tr>
-                <td class="text-align-left color-table-side-label">Sandra Gore</td>
-                <td>10</td>
-                <td>261</td>
-                <td>90.0</td>
-                <td>23.5</td>
-                <td>26.1</td>
-                <td>15</td>
-                <td>86.7</td>
-                <td>1.5</td>
-                <td>$1980</td>
-                <td>$360</td>
-            </tr>
-        </tbody>
-    </table>
-    <div class="observations-list-title">Observations about the statistics</div>
-    <div class="observations-body">
-        <ul>
-            <li><span class="observation-title">Percent answered correctly.</span><br/> Matt Jackson with 96% is ahead among players who have been in 10 games or more. Ken Jennings is 19th at 91.5%
-            </li>
-            <li><span class="observation-title">Ken Jennings.</span><br/> His percent answered right is high but not the highest. Where he shines is the number of clues he answers per game where he is way above everybody else with 36.2 clues per game with
-                the next best person is at 30.0 clues per game. That is 20% more clues per game.
-            </li>
-            <li><span class="observation-title">Daily Doubles.</span><br/> Players who win a lot of games answer a lot of daily doubles. Some of this is the strategy of "hunting" for daily doubles and part of it is that multiple-game winners just answer a
-                lot of questions correctly. A few people also seem to bet big on daily doubles.
-            </li>
-            <li><span class="observation-title">Daily Double Bets.</span><br/> Roger Craig is the highest bettor. He win an aaverage of $9213 on 1.8 daily double per game, an average of over $5118 per daily double. Matt Jackson is close with an average of
-                $8194 on 1.9 daily doubles per game, with an average daily double win of $4312
-            </li>
-        </ul>
-    </div>
+  <table class="players-table table table-bordered table-striped">
+    <thead>
+      <tr class="color-table-top-label">
+        <th>&nbsp;</th>
+        <th>&nbsp;</th>
+        <th colspan="4">All Clues</th>
+        <th colspan="5">Daily Doubles</th>
+      </tr>
+      <tr class="color-table-top-label">
+        <th>Player</th>
+        <th>Games</th>
+        <th>Total</th>
+        <th>% right</th>
+        <th>right/game</th>
+        <th>clues/game</th>
+        <th>Total</th>
+        <th>% right</th>
+        <th>DD/game</th>
+        <th>won/game</th>
+        <th>lost/game</th>
+      </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+  </table>
 </div>
+
+
+<div class="article-title">Observations about the statistics</div>
+
+<article class="archive-article"><div class="archive-article-inner">
+  <header class="archive-article-title">
+    Percent answered correctly</header>
+  Matt Jackson with 96% is ahead among players who have been in 10 games or more. Ken Jennings is 19th at 91.5%.
+</div></article>
+
+<article class="archive-article"><div class="archive-article-inner">
+  <header class="archive-article-title">
+    Ken Jennings</header>
+  His percent answered right is high but not the highest. Where he shines is the number of clues he answers per game where he is way above everybody else with 36.2 clues per game with the next best person is at 30.0 clues per game. That is 20% more clues per game.
+</div></article>
+
+<article class="archive-article"><div class="archive-article-inner">
+  <header class="archive-article-title">
+    Daily Doubles</header>
+  Players who win a lot of games answer a lot of daily doubles. Some of this is the strategy of "hunting" for daily doubles and part of it is that multiple-game winners just answer a lot of questions correctly. A few people also seem to bet big on daily doubles.
+</div></article>
+
+<article class="archive-article"><div class="archive-article-inner">
+  <header class="archive-article-title">
+    Daily Double Bets</header>
+  Roger Craig is the highest bettor. He win an aaverage of $9213 on 1.8 daily double per game, an average of over $5118 per daily double. Matt Jackson is close with an average of $8194 on 1.9 daily doubles per game, with an average daily double win of $4312.
+</div></article>

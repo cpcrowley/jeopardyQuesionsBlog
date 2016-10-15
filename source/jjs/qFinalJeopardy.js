@@ -1,31 +1,5 @@
 "use strict";
-
-//------------------------------------------------------------------------------
-//------------------------------------------------------------------------------
-var notes = function() {
-  var html = QQ.appendObservations([
-    [
-      'The leader usually wins',
-      'The dollar leader going into final jeopardy wins 74% of the time, 65% if there is not a lock. The player in third only has an 8% chance of winning even if there is not a lock.'
-    ],
-    [
-      'Locks',
-      'Sometimes the leaer has a <em>lock</em>, that is, more than twice as much money as the second place player, so a low bet will guarantee a win no matter how final jeopardy comes out. The leader has a lock 27% of the time.'
-    ],
-    [
-      'Brad Rutter',
-      'Brad Rutter played in the era when you could only play five regular games and then you had to quit. He has since played in 23 tournament games an done very well, with 7 locks in those 23 games, against tournament quality players.'
-    ],
-  ])
-  return html
-}
-
-//------------------------------------------------------------------------------
-//------------------------------------------------------------------------------
-var whoWinsFJ = function() {
-  var html = ''
-  return html
-}
+QQ.lockTableInitialized = false
 
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
@@ -40,9 +14,7 @@ QQ.finalJeopardy = function(pane, gameType) {
   var c2data = QQ.getData('c2data.json')
   var c3data = QQ.getData('c3data.json')
 
-  //----------------------------------------------------------------------------
-  //----------------------------------------------------------------------------
-  var html = '<div class="table-responsive results-div">'
+  var html = ''
 
   var finalData = cdata.sAllFinalData
   switch (gameType) {
@@ -54,7 +26,7 @@ QQ.finalJeopardy = function(pane, gameType) {
 
   //----------------------------------------------------------------------------
   //----------------------------------------------------------------------------
-  html += '<table class="table table-bordered"><thead><tr class="color-table-top-label"><th>&nbsp;</th><th>First</th><th>Second</th><th>Third</th></tr></thead><tbody>'
+  var html = ''
 
   //----------------------------------------------------------------------------
   function winLine(sub1, sub2, percent, title) {
@@ -87,12 +59,9 @@ QQ.finalJeopardy = function(pane, gameType) {
   html += '<tr><td class="text-align-left">% locks by any player</td><td>'+(100*finalData.totalLocks/finalData.totalGames).toFixed()+'%</td>'
   html += '<td></td><td></td></tr>'
 
-  //----------------------------------------------------------------------------
-  html += '</tbody></table>';
+  $('.place-table tbody').empty().append(html)
 
-  //----------------------------------------------------------------------------
-  //----------------------------------------------------------------------------
-  html += '<table id="lock-table" class="table table-bordered table-striped"><thead><tr class="color-table-top-label"><th>Player</th><th>Locks</th><th>Games</th><th>% locks</th></tr></thead><tbody>'
+  html = ''
 
   var players = cdata.players
   switch (gameType) {
@@ -114,11 +83,40 @@ QQ.finalJeopardy = function(pane, gameType) {
     '</tr>'
   })
 
-  html += '</tbody></table>';
-  html += notes()
-  html += '</div>';
-  pane.empty().append(html)
-  $('#lock-table').dataTable({
-    "order": [[1, 'desc']]
-})
+  console.log('QQ.finalJeopardy: html='+html)
+
+  var lockTable = $('.lock-table')
+  lockTable.find('tbody').empty().append(html)
+  if (QQ.lockTableInitialized) {
+    lockTable.order([1, 'desc'])
+  } else {
+    lockTable.dataTable({"order": [[1, 'desc']]})
+    QQ.lockTableInitialized = true
+  }
+
+  var gamesSelect = $('#final-games-type')
+  gamesSelect.val(gameType)
+  function handleParamChange() {
+    QQ.finalJeopardy(pane, parseInt(gamesSelect.val(),10))
+  }
+  gamesSelect.on('change', handleParamChange)
 }
+/*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*/

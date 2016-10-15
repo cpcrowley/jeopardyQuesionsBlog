@@ -5,9 +5,7 @@ menu:
   "Players": /players
   "Number of Games": /numberOfGames
   "Final Jeopardy": /finalJeopardy
-  "Categories": /categories
   "Seasons": /seasonsAndYears
-  "Search Clues": /wordsInClues
   "About": /about
 
 # Content

@@ -2,23 +2,8 @@
 
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
-var notes = function() {
-  var html = QQ.appendObservations([
-    [
-      'It is hard to win on Jeopardy',
-      'Only 28% of contestants make it past the first game. Out of about 10,000 players, less than 3,000 win any games at all.'
-    ],
-    [
-      'The champion wins 44% of the time',
-      'Almost 72% of players lose in their first games so there is a 28% chance of a challenger (a non-champion) winning a game. There are two challengers so they have a 56% of winning. This means the champion has a 44% chance of winning.'
-    ],
-  ])
-  return html
-}
-
-//------------------------------------------------------------------------------
-//------------------------------------------------------------------------------
 QQ.winsByPlayer = function(pane, gameType) {
+  console.log('QQ.winsByPlayer gameType='+gameType)
   var cdata = QQ.getData('cdata.json')
   if (!cdata) {
     console.log('***** winsByPlayer: cData not ready')
@@ -30,22 +15,19 @@ QQ.winsByPlayer = function(pane, gameType) {
   var c3data = QQ.getData('c3data.json')
   var dataToUse = null
   switch (gameType) {
-    case 0: dataToUse = c0data; break
-    case 1: dataToUse = c1data; break
-    case 2: dataToUse = c2data; break
-    case 3: dataToUse = c3data; break
-    default: dataToUse = cdata; break
+    case 0: dataToUse = c0data; console.log('Using c0data'); break
+    case 1: dataToUse = c1data; console.log('Using c1data'); break
+    case 2: dataToUse = c2data; console.log('Using c2data'); break
+    case 3: dataToUse = c3data; console.log('Using c3data'); break
+    default: dataToUse = cdata; console.log('Using cdata'); break
   }
 
-  var html = '<div class="table-responsive results-div">'
-  html += '<table class="table table-bordered table-striped">'
-  html += '<tr class="color-table-top-label">'
-  var ths = ['Games Played', '# Players', '%', 'Cum. Players', 'Cum. %']
-  _.forEach(ths, function(th){ html += `<th>${th}</th>` })
-  html += '</tr>'
+  var html = ''
 
   var numPlayersByGameCount = {}
 
+  console.log('dataToUse.players', dataToUse.players)
+  console.log('dataToUse.players[0]', dataToUse.players[0])
   _.forEach(dataToUse.players, function(player) {
     var nGames = player.games
     var count = numPlayersByGameCount[nGames]
@@ -53,10 +35,12 @@ QQ.winsByPlayer = function(pane, gameType) {
     count += 1
     numPlayersByGameCount[nGames] = count
   })
+  console.log('numPlayersByGameCount', numPlayersByGameCount)
 
   var gameCountNumPlayersRows = _.map(numPlayersByGameCount,
     function(numPlayers,gameCount) {return [gameCount,numPlayers,0]})
     .sort(function(a,b) {return a[0]-b[0]})
+  //console.log('gameCountNumPlayersRows', gameCountNumPlayersRows)
 
   var cumTotal = 0
   var totalPlayers = 0
@@ -66,8 +50,10 @@ QQ.winsByPlayer = function(pane, gameType) {
     cumTotal += row[1]
     row[2] = cumTotal
   })
+  //console.log('gameCountNumPlayersRows', gameCountNumPlayersRows)
 
   _.forEach(gameCountNumPlayersRows, function(row) {
+    //console.log('LOOP row', row)
     var pc = (100 * row[1]) / totalPlayers
     var pcCum = (100 * row[2]) / totalPlayers
 
@@ -77,8 +63,33 @@ QQ.winsByPlayer = function(pane, gameType) {
     html += '</tr>'
   })
 
-  html += '</table>';
-  html += notes()
-  html += '</div>'
-  pane.empty().append(html)
+  $('tbody').empty().append(html)
+
+  var gamesSelect = $('#number-games-type')
+  gamesSelect.val(gameType.toString())
+  console.log('set gamesSelect to '+gamesSelect.val())
+  function handleParamChange() {
+    //console.log('handleParamChange gamesSelect='+parseInt(gamesSelect.val(),10))
+    QQ.winsByPlayer(pane, parseInt(gamesSelect.val(),10))
+  }
+  gamesSelect.on('change', handleParamChange)
 };
+/*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*/

@@ -1,16 +1,5 @@
 "use strict";
-
-//------------------------------------------------------------------------------
-//------------------------------------------------------------------------------
-var notes = function() {
-  var html = QQ.appendObservations([
-    [
-      'Less data in season 1-12',
-      'The j-archive site has nearly complete data for seasons 14-32 (1997-2016) but the data for seasons 1-12 is spotty.'
-    ],
-  ])
-  return html
-}
+QQ.seasonTableInitialized = false
 
 var seasonData = [
   [32, '2015-09-14', '2016-07-29', 230],
@@ -46,20 +35,10 @@ var seasonData = [
   [ 2, '1985-09-09', '1986-06-06', 43],
   [ 1, '1984-09-10', '1985-06-07', 38]
 ]
-
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
 QQ.theData = function(pane) {
-  var html = '<div class="table-responsive results-div">'
-  html += '<table id="the-data-table" class="table table-bordered table-striped">'+
-  '<thead>'+
-  '<tr class="color-table-top-label">'+
-  '<th>Season</th>'+
-  '<th>Games Archived</th>'+
-  '<th>Started</th>'+
-  '<th>Ended</th>'+
-  '</tr>';
-  html += '</thead><tbody>';
+  var html = ''
 
   _.forEach(seasonData, function(sd) {
     html += '<tr>'
@@ -70,11 +49,14 @@ QQ.theData = function(pane) {
     html += '</tr>'
   })
 
-  html += '</tbody></table>';
-  html += notes()
-  html += '</div>'
-  pane.empty().append(html)
-  $('#the-data-table').dataTable({
-    "order": [[0, 'desc']]
-  })
+
+  var seasonTable = $('#the-data-table')
+  seasonTable.find('tbody').empty().append(html)
+  if (QQ.seasonTableInitialized) {
+    seasonTable.order([0, 'desc'])
+  } else {
+    seasonTable.dataTable({"order": [[0, 'desc']]})
+    QQ.seasonTableInitialized = true
+  }
+
 }

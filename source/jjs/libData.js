@@ -2,6 +2,25 @@
 
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
+QQ.waitForGoogleCharts = function(callback, timesToWait, delayToWait) {
+  // Give up after 10 seconds.
+  if (timesToWait < 0) {
+    console.log('ERROR: giving up on google charts')
+    return
+  }
+  if (!QQ.googleChartsIsLoaded) {
+    setTimeout(function(){
+      QQ.waitForGoogleCharts(callback, timesToWait-1, delayToWait)
+    }, delayToWait)
+    return
+  }
+  console.log('Calling google charts callback')
+  callback()
+}
+
+
+//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 QQ.clueArrayToObject = function(clue) {
   return {
     indexClueString: clue[0],
@@ -19,16 +38,20 @@ QQ.clueArrayToObject = function(clue) {
 //------------------------------------------------------------------------------
 QQ.appendObservations = function(items, title) {
   if (!title) title = 'Observations about the statistics'
-  var html = '<div class="observations-list-title">'+title+'</div><div class="observations-body"><ul>'
+  var html = '<div class="article-title">'+title+'</div>'
 
   _.forEach(items, function(item) {
-    html += '<li><span class="observation-title">'+item[0]+'.</span><br/>'+item[1]+'</li>'
+    html += '<article class="archive-article">'+
+      '<div class="archive-article-inner">'+
+        '<header class="archive-article-title">' + item[0] + '</header>'+
+        item[1]+
+      '</div>'+
+    '</article>'
   })
 
-  html += '</ul></div>'
+  html += '</div>'
   return html
 }
-
 
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
@@ -162,7 +185,7 @@ QQ.makeSeasonResults = function() {
 //------------------------------------------------------------------------------
 QQ.initializeResults = function() {
   var results = {}
-  for (var season = 1; season < 33; ++season) {
+  for (var season = 1; season < 34; ++season) {
     var seasonIndex = 's' + season
     results[seasonIndex] = QQ.makeSeasonResults()
   }

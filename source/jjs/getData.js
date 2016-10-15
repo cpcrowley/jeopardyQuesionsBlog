@@ -13,14 +13,15 @@ var dataStore = {
   'c1data.json': {state:'not fetched', mbSize:0.4, data:null},
   'c2data.json': {state:'not fetched', mbSize:0.4, data:null},
   'c3data.json': {state:'not fetched', mbSize:0.4, data:null},
-  'cdata.json': {state:'fetching', mbSize:0.4, data:null},
-  'clueStrings.json': {state:'not fetched', mbSize:29.3, data:null},
-  'answerStrings.json': {state:'not fetched', mbSize:5.4, data:null},
-  'categoryStrings.json': {state:'not fetched', mbSize:1.5, data:null}
+  'cdata.json': {state:'fetching', mbSize:0.4, data:null}
+  //'clueStrings.json': {state:'not fetched', mbSize:29.3, data:null},
+  //'answerStrings.json': {state:'not fetched', mbSize:5.4, data:null},
+  //'categoryStrings.json': {state:'not fetched', mbSize:1.5, data:null}
 }
-var pendingFetches = 0
+//var pendingFetches = 0
 
 var cDataNames = ['c0data.json', 'c1data.json', 'c2data.json', 'c3data.json']
+
 function processCData() {
   if (_.every(cDataNames, function(name) { return dataStore[name].state === 'valid'})) {
     var c0data = dataStore['c0data.json'].data
@@ -38,6 +39,10 @@ function processCData() {
     dataStore['cdata.json'].data = c99data
     dataStore['cdata.json'].state = 'valid'
     //console.log('ALL DATA FETCHED. cData is valid')
+    //console.log('c0data.players', c0data.players)
+    //console.log('c0data.players[0]', c0data.players[0])
+    //console.log('c1data.players', c1data.players)
+    //console.log('c1data.players[0]', c1data.players[0])
   }
 }
 
@@ -45,10 +50,10 @@ QQ.getData = function(fileName) {
   var dataInfo = dataStore[fileName]
   switch (dataInfo.state) {
     case 'not fetched':
-    if (pendingFetches === 0) {
-      $('#loading-info-box').show()
-    }
-    ++pendingFetches
+    //if (pendingFetches === 0) {
+    //  $('#loading-info-box').show()
+    //}
+    //++pendingFetches
     dataInfo.state = 'fetching'
     //console.log('BEGIN fetching '+fileName)
     $.ajax({
@@ -59,10 +64,10 @@ QQ.getData = function(fileName) {
       //console.log('DONE fetching '+fileName)
       dataInfo.state = 'valid'
       dataInfo.data = dataIn
-      pendingFetches -= 1
-      if (pendingFetches === 0) {
-        $('#loading-info-box').hide()
-      }
+      //pendingFetches -= 1
+      //if (pendingFetches === 0) {
+      //  $('#loading-info-box').hide()
+      //}
       processCData()
     })
     .fail(function(prom, status, code) {

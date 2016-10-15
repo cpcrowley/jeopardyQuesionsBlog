@@ -1,171 +1,46 @@
 title: Number of Games
 layout: jpage
 ---
+<form class="form-horizontal" role="form">
+  <div class="form-group">
+    <span class="form-label" style="margin:0 10px">Games to use</span>
+    <select id="number-games-type" name="player" class="player">
+      <option selected="" value="99">All games</option>
+      <option value="0">Regular games only</option>
+      <option value="1">Tournament games only</option>
+      <option value="2">Celebrity games only</option>
+      <option value="3">School games only</option>
+    </select>
+  </div>
+</form>
+
 <div class="table-responsive results-div">
-    <table class="table table-bordered table-striped">
-        <tr class="color-table-top-label">
-            <th>Games Played</th>
-            <th># Players</th>
-            <th>%</th>
-            <th>Cum. Players</th>
-            <th>Cum. %</th>
-        </tr>
-        <tr class="color-table-body">
-            <td>1</td>
-            <td>7242</td>
-            <td>71.66</td>
-            <td>7242</td>
-            <td>71.66</td>
-        </tr>
-        <tr class="color-table-body">
-            <td>2</td>
-            <td>1685</td>
-            <td>16.67</td>
-            <td>8927</td>
-            <td>88.33</td>
-        </tr>
-        <tr class="color-table-body">
-            <td>3</td>
-            <td>517</td>
-            <td>5.12</td>
-            <td>9444</td>
-            <td>93.45</td>
-        </tr>
-        <tr class="color-table-body">
-            <td>4</td>
-            <td>323</td>
-            <td>3.20</td>
-            <td>9767</td>
-            <td>96.65</td>
-        </tr>
-        <tr class="color-table-body">
-            <td>5</td>
-            <td>73</td>
-            <td>0.72</td>
-            <td>9840</td>
-            <td>97.37</td>
-        </tr>
-        <tr class="color-table-body">
-            <td>6</td>
-            <td>56</td>
-            <td>0.55</td>
-            <td>9896</td>
-            <td>97.92</td>
-        </tr>
-        <tr class="color-table-body">
-            <td>7</td>
-            <td>70</td>
-            <td>0.69</td>
-            <td>9966</td>
-            <td>98.61</td>
-        </tr>
-        <tr class="color-table-body">
-            <td>8</td>
-            <td>47</td>
-            <td>0.47</td>
-            <td>10013</td>
-            <td>99.08</td>
-        </tr>
-        <tr class="color-table-body">
-            <td>9</td>
-            <td>26</td>
-            <td>0.26</td>
-            <td>10039</td>
-            <td>99.34</td>
-        </tr>
-        <tr class="color-table-body">
-            <td>10</td>
-            <td>25</td>
-            <td>0.25</td>
-            <td>10064</td>
-            <td>99.58</td>
-        </tr>
-        <tr class="color-table-body">
-            <td>11</td>
-            <td>15</td>
-            <td>0.15</td>
-            <td>10079</td>
-            <td>99.73</td>
-        </tr>
-        <tr class="color-table-body">
-            <td>12</td>
-            <td>4</td>
-            <td>0.04</td>
-            <td>10083</td>
-            <td>99.77</td>
-        </tr>
-        <tr class="color-table-body">
-            <td>13</td>
-            <td>7</td>
-            <td>0.07</td>
-            <td>10090</td>
-            <td>99.84</td>
-        </tr>
-        <tr class="color-table-body">
-            <td>14</td>
-            <td>3</td>
-            <td>0.03</td>
-            <td>10093</td>
-            <td>99.87</td>
-        </tr>
-        <tr class="color-table-body">
-            <td>16</td>
-            <td>5</td>
-            <td>0.05</td>
-            <td>10098</td>
-            <td>99.92</td>
-        </tr>
-        <tr class="color-table-body">
-            <td>17</td>
-            <td>1</td>
-            <td>0.01</td>
-            <td>10099</td>
-            <td>99.93</td>
-        </tr>
-        <tr class="color-table-body">
-            <td>18</td>
-            <td>3</td>
-            <td>0.03</td>
-            <td>10102</td>
-            <td>99.96</td>
-        </tr>
-        <tr class="color-table-body">
-            <td>22</td>
-            <td>1</td>
-            <td>0.01</td>
-            <td>10103</td>
-            <td>99.97</td>
-        </tr>
-        <tr class="color-table-body">
-            <td>25</td>
-            <td>1</td>
-            <td>0.01</td>
-            <td>10104</td>
-            <td>99.98</td>
-        </tr>
-        <tr class="color-table-body">
-            <td>28</td>
-            <td>1</td>
-            <td>0.01</td>
-            <td>10105</td>
-            <td>99.99</td>
-        </tr>
-        <tr class="color-table-body">
-            <td>86</td>
-            <td>1</td>
-            <td>0.01</td>
-            <td>10106</td>
-            <td>100.00</td>
-        </tr>
-    </table>
-    <div class="observations-list-title">Observations about the statistics</div>
-    <div class="observations-body">
-        <ul>
-            <li><span class="observation-title">It is hard to win on Jeopardy.</span><br/> Only 28% of contestants make it past the first game. Out of about 10,000 players, less than 3,000 win any games at all.
-            </li>
-            <li><span class="observation-title">The champion wins 44% of the time.</span><br/> Almost 72% of players lose in their first games so there is a 28% chance of a challenger (a non-champion) winning a game. There are two challengers so they have
-                a 56% of winning. This means the champion has a 44% chance of winning.
-            </li>
-        </ul>
-    </div>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr class="color-table-top-label">
+        <th>Games Played</th>
+        <th># Players</th>
+        <th>%</th>
+        <th>Cum. Players</th>
+        <th>Cum. %</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+
+  </table>
 </div>
+
+<div class="article-title">Observations about the statistics</div>
+
+<article class="archive-article"><div class="archive-article-inner">
+  <header class="archive-article-title">
+    It is hard to win on Jeopardy</header>
+  Only 28% of contestants make it past the first game. Out of about 10,000 players, less than 3,000 win any games at all.
+</div></article>
+
+<article class="archive-article"><div class="archive-article-inner">
+  <header class="archive-article-title">
+    The champion wins 44% of the time</header>
+  Almost 72% of players lose in their first games so there is a 28% chance of a challenger (a non-champion) winning a game. There are two challengers so they have a 56% of winning. This means the champion has a 44% chance of winning.
+</div></article>
