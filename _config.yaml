@@ -12,8 +12,8 @@ timezone: America/Denver
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://crowley.pw
-root: /
+url: http://crowley.pw/jeopardy
+root: /jeopardy/
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 disqus_shortname: crowley-pw

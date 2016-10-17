@@ -58,7 +58,7 @@ QQ.getData = function(fileName) {
     //console.log('BEGIN fetching '+fileName)
     $.ajax({
       dataType: "json",
-      url: '/jdata/'+fileName,
+      url: '/jeopardy/jdata/'+fileName,
     })
     .done(function(dataIn) {
       //console.log('DONE fetching '+fileName)

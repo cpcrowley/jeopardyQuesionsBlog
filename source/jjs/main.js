@@ -90,7 +90,7 @@ var initCallbacks = function() {
   google.charts.load('current', {'packages':['corechart', 'line', 'bar']});
   google.charts.setOnLoadCallback(function(){
     QQ.googleChartsIsLoaded = true
-    console.log('*** Google charts has loaded')
+    //console.log('*** Google charts has loaded')
   })
   QQ.getData('c0data.json')
   QQ.getData('c1data.json')
