@@ -1,6 +1,6 @@
 # ~/a/jeopardyBlog
 help: ; @cat ./makefile
-.PHONY: hexo upload
+.PHONY: hexo upload merge
 GCS_BUCKET_DIR = gs://crowley.pw/jeopardy/
 CACHE_CONTROL = -h "Cache-Control:private, max-age=0, no-transform"
 hexo:
