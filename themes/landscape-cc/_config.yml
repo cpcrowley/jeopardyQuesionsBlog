@@ -1,6 +1,6 @@
 # Header
 menu:
-  "Charlie ⌂": "http://crowley.pw"
+  "Charlie ⌂": /topHome
   "Home": /
   "Percent Correct": /percentCorrect
   "Players": /players
@@ -17,7 +17,7 @@ fancybox: true
 #subtitle:
 
 # Sidebar, can be 'bottom', 'right', 'left', or false
-sidebar: false
+sidebar: bottom
 # we could add new widget types into layout/_partual/_widget directory
 widgets:
 - recent_posts

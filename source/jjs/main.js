@@ -26,44 +26,59 @@ var changeBannerAfterInterval = function(imageName, textColor, interval) {
 
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
+var setBannerImg = function(imgName) {
+  $('#banner').css('background-image', 'url("/jeopardy/css/images/' + imgName + '")')
+}
+
+//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 var initTabs = function() {
-  var parts = window.location.href.split('/')
-  var paneName = 'none'
-  var l = parts.length
-  if (parts.length > 1) paneName = parts[l-2]
+  QQ.paneName = 'none'
+  QQ.topUrl = 'crowley.pw'
+  var parts = window.location.href.split('/jeopardy/')
+  if (parts.length == 2) {
+    QQ.topUrl = parts[0]
+    QQ.paneName = parts[1]
+    QQ.paneName = _.trimEnd(QQ.paneName, '/')
+  } else {
+    console.log('***** ERROR: parsing window.location: "' + window.location + '"')
+  }
   var mainSection = $('.article-entry')
-  //console.log('mainSection', mainSection)
-  var imageChangeInterval = 1000
-  //console.log('initTabs: paneName='+paneName)
-  switch (paneName) {
+  var imgName = 'jeopardyHome.jpeg'
+
+  switch (QQ.paneName) {
+
+    case 'topHome':
+    window.location = QQ.topUrl
+    return
 
     case 'percentCorrect':
-    //changeBannerAfterInterval('percentCorrect.jpeg', '#00f', imageChangeInterval)
+    setBannerImg('percentCorrect.jpeg')
     QQ.percentCorrect(mainSection, 0, 99, 1, 0, 0)
     break;
 
     case 'players':
-    //changeBannerAfterInterval('kenWatsonBrad.jpeg', '#0f0', imageChangeInterval)
+    setBannerImg('kenWatsonBrad.jpeg')
     QQ.analyzePlayers(mainSection, 0, 10)
     break;
 
     case 'finalJeopardy':
-    //changeBannerAfterInterval('finalJeopardy.jpeg', '#000', imageChangeInterval)
+    setBannerImg('finalJeopardy.jpeg')
     QQ.finalJeopardy(mainSection, 0)
     break;
 
     case 'numberOfGames':
-    //changeBannerAfterInterval('kenWatsonBrad.jpeg', '#0f0', imageChangeInterval)
+    setBannerImg('kenWatsonBrad.jpeg')
     QQ.winsByPlayer(mainSection, 1)
     break;
 
     case 'seasonsAndYears':
-    //changeBannerAfterInterval('jeopardy.png', '#0f0', imageChangeInterval)
+    setBannerImg('jeopardy.png')
     QQ.theData(mainSection)
     break;
 
     /*case 'wordsInClues':
-    //changeBannerAfterInterval('wordsInClues.jpeg', '#0f0', imageChangeInterval)
+    setBannerImg('wordsInClues.jpeg')
     QQ.getData('categoryStrings.json')
     waitFor('answerStrings.json', 100, function(){
       QQ.findInClues(mainSection, 'Albuquerque')
@@ -71,14 +86,14 @@ var initTabs = function() {
     break;*/
 
     /*case 'categories':
-    //changeBannerAfterInterval('categories.png', '#0f0', imageChangeInterval)
+    setBannerImg('categories.png')
     waitFor('categoryStrings.json', 100, function(){
       QQ.categories(mainSection, 20)
     })
     break;*/
 
     default:
-    //changeBannerAfterInterval('jeopardyHome.jpeg', '#fff', imageChangeInterval)
+    setBannerImg('jeopardyHome.jpeg')
     break
   }
 }
