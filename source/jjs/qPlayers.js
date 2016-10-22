@@ -21,8 +21,37 @@ QQ.analyzePlayers = function(pane, gameType, numberOfGames) {
     case 3: dataToUse = c3data; break
     default: dataToUse = cdata; break
   }
+  console.log('analyzePlayers: gameType='+gameType+' #players='+dataToUse.players.length)
+  console.log('cdata.players.length='+cdata.players.length)
+  console.log('c0data.players.length='+c0data.players.length)
+  console.log('c1data.players.length='+c1data.players.length)
+  console.log('c2data.players.length='+c2data.players.length)
+  console.log('c3data.players.length='+c3data.players.length)
 
-  var html = ''
+  var html = `<table class="players-table table table-bordered table-striped">
+    <thead>
+      <tr class="color-table-top-label">
+        <th>&nbsp;</th>
+        <th>&nbsp;</th>
+        <th colspan="4">All Clues</th>
+        <th colspan="5">Daily Doubles</th>
+      </tr>
+      <tr class="color-table-top-label">
+        <th>Player</th>
+        <th>Games</th>
+        <th>Total</th>
+        <th>% right</th>
+        <th>right/game</th>
+        <th>clues/game</th>
+        <th>Total</th>
+        <th>% right</th>
+        <th>DD/game</th>
+        <th>won/game</th>
+        <th>lost/game</th>
+      </tr>
+    </thead>
+    <tbody>
+    `
 
   _.forEach(dataToUse.players, function(playerInfo) {
     if (playerInfo.games >= numberOfGames) {
@@ -52,14 +81,11 @@ QQ.analyzePlayers = function(pane, gameType, numberOfGames) {
     }
   })
 
-  var playersTable = $('.players-table')
-  playersTable.find('tbody').empty().append(html)
-  if (QQ.playersTableInitialized) {
-    playersTable.order([1, 'desc'])
-  } else {
-    playersTable.dataTable({"order": [[1, 'desc']]})
-    QQ.playersTableInitialized = true
-  }
+  html += '</tbody></table>'
+
+  var playersTable = $(html)
+  $('.results-div').empty().append(playersTable)
+  playersTable.DataTable({"order": [[1, 'desc']]})
 
   var gamesSelect = $('#games-to-use')
   gamesSelect.val(gameType)
@@ -67,13 +93,17 @@ QQ.analyzePlayers = function(pane, gameType, numberOfGames) {
   numberGamesSelect.val(numberOfGames)
 
   function handleParamChange() {
-    QQ.analyzePlayers(pane, parseInt(gamesSelect.val(),10), parseInt(numberGamesSelect.val(),10))
+    var gs = parseInt(gamesSelect.val(),10)
+    var ngs = parseInt(numberGamesSelect.val(),10)
+    //console.log('handleParamChange gs.val='+gamesSelect.val()+' gs='+gs)
+    QQ.analyzePlayers(pane, gs, ngs)
   }
   gamesSelect.on('change', handleParamChange)
   numberGamesSelect.on('change', handleParamChange)
 
 }
 /*
+
 
 
 

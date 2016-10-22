@@ -100,18 +100,44 @@ var initTabs = function() {
 
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
+function convertPlayersToObjects(data) {
+  var newPlayers = []
+  _.forEach(data.players, function(pi,key) {
+    newPlayers.push(QQ.playerInfoArrayToObject(pi,key))
+  })
+  data.players = newPlayers
+}
+
+//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
+function initData() {
+  convertPlayersToObjects(QQ.allData)
+}
+
+//------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 var initCallbacks = function() {
   //console.log('initCallbacks: jQuery init called')
   google.charts.load('current', {'packages':['corechart', 'line', 'bar']});
   google.charts.setOnLoadCallback(function(){
     QQ.googleChartsIsLoaded = true
-    //console.log('*** Google charts has loaded')
   })
-  QQ.getData('c0data.json')
-  QQ.getData('c1data.json')
-  QQ.getData('c2data.json')
-  QQ.getData('c3data.json')
-  //QQ.getData('categoryStrings.json')
-  waitFor('cdata.json', 100, initTabs)
+  initData()
+  initTabs()
 }
 $(initCallbacks)
+/*
+
+
+
+
+
+
+
+
+
+
+
+
+
+*/

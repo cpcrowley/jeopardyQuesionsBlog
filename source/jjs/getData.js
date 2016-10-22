@@ -1,14 +1,7 @@
 "use strict";
 
-function convertPlayersToObjects(data) {
-  var newPlayers = []
-  _.forEach(data.players, function(pi,key) {
-    newPlayers.push(QQ.playerInfoArrayToObject(pi,key))
-  })
-  data.players = newPlayers
-}
 
-var dataStore = {
+/*var dataStore = {
   'c0data.json': {state:'not fetched', mbSize:0.4, data:null},
   'c1data.json': {state:'not fetched', mbSize:0.4, data:null},
   'c2data.json': {state:'not fetched', mbSize:0.4, data:null},
@@ -38,11 +31,10 @@ function processCData() {
     })
     dataStore['cdata.json'].data = c99data
     dataStore['cdata.json'].state = 'valid'
-    //console.log('ALL DATA FETCHED. cData is valid')
-    //console.log('c0data.players', c0data.players)
-    //console.log('c0data.players[0]', c0data.players[0])
-    //console.log('c1data.players', c1data.players)
-    //console.log('c1data.players[0]', c1data.players[0])
+    /*var topPlayers = ['Ken Jennings', 'Julia Collins', 'David Madden', 'Matt Jackson', 'Seth Wilson', 'Arthur Chu']
+    _.forEach(topPlayers, function(p){
+      console.log(`${p}: regular:${_.find(c0data.players, ['name',p]).games} tournament:${ _.find(c1data.players, ['name',p]).games}`)
+    })*/
   }
 }
 
@@ -89,4 +81,4 @@ QQ.getData = function(fileName) {
     break
   }
   return dataInfo.data
-}
+}*/

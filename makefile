@@ -12,5 +12,5 @@ upload:
 	hexo generate
 	gsutil -m $(CACHE_CONTROL) rsync -e -r public/ $(GCS_BUCKET_DIR)
 merge:
-	echo '-----merge';git checkout master;git merge work;git branch -d work
-	echo '-----push';git push;echo '-----co work';git checkout -b work;git status
+	@echo '-----merge';git checkout master;git merge work;git branch -d work
+	@echo '-----push';git push;echo '-----co work';git checkout -b work;git status
