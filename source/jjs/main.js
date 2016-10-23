@@ -100,18 +100,38 @@ var initTabs = function() {
 
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
-function convertPlayersToObjects(data) {
-  var newPlayers = []
-  _.forEach(data.players, function(pi,key) {
-    newPlayers.push(QQ.playerInfoArrayToObject(pi,key))
-  })
-  data.players = newPlayers
+QQ.getData = function(fileName) {
+  switch (fileName) {
+    case 'cdata.json': return QQ.data4
+    case 'c0data.json': return QQ.data0
+    case 'c1data.json': return QQ.data1
+    case 'c2data.json': return QQ.data2
+    case 'c3data.json': return QQ.data3
+    default:
+    console.log('QQ.getData '+fileName+' not found')
+    break
+  }
 }
 
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
 function initData() {
-  convertPlayersToObjects(QQ.allData)
+  var newPlayers = []
+  _.forEach(JeopardyData[5], function(pi,key) {
+    newPlayers.push(QQ.playerInfoArrayToObject(pi,key))
+  })
+  JeopardyData[5] = newPlayers
+  QQ.data0 = JeopardyData[0]
+  QQ.data0.players = newPlayers
+  QQ.data1 = JeopardyData[1]
+  QQ.data1.players = newPlayers
+  QQ.data2 = JeopardyData[2]
+  QQ.data2.players = newPlayers
+  QQ.data3 = JeopardyData[3]
+  QQ.data3.players = newPlayers
+  QQ.data4 = JeopardyData[4]
+  QQ.data4.players = newPlayers
+  console.log('JeopardyData', JeopardyData)
 }
 
 //------------------------------------------------------------------------------

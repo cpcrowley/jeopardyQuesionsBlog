@@ -31,10 +31,10 @@ function processCData() {
     })
     dataStore['cdata.json'].data = c99data
     dataStore['cdata.json'].state = 'valid'
-    /*var topPlayers = ['Ken Jennings', 'Julia Collins', 'David Madden', 'Matt Jackson', 'Seth Wilson', 'Arthur Chu']
+    var topPlayers = ['Ken Jennings', 'Julia Collins', 'David Madden', 'Matt Jackson', 'Seth Wilson', 'Arthur Chu']
     _.forEach(topPlayers, function(p){
       console.log(`${p}: regular:${_.find(c0data.players, ['name',p]).games} tournament:${ _.find(c1data.players, ['name',p]).games}`)
-    })*/
+    })
   }
 }
 
