@@ -16,12 +16,12 @@ QQ.finalJeopardy = function(pane, gameType) {
 
   var html = ''
 
-  var finalData = cdata.sAllFinalData
+  var finalData = cdata.finalData
   switch (gameType) {
-    case 0: finalData = c0data.sAllFinalData; break
-    case 1: finalData = c1data.sAllFinalData; break
-    case 2: finalData = c2data.sAllFinalData; break
-    case 3: finalData = c3data.sAllFinalData; break
+    case 0: finalData = c0data.finalData; break
+    case 1: finalData = c1data.finalData; break
+    case 2: finalData = c2data.finalData; break
+    case 3: finalData = c3data.finalData; break
   }
 
   //----------------------------------------------------------------------------

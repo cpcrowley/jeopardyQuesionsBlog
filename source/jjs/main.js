@@ -116,22 +116,18 @@ QQ.getData = function(fileName) {
 //------------------------------------------------------------------------------
 //------------------------------------------------------------------------------
 function initData() {
-  var newPlayers = []
-  _.forEach(JeopardyData[5], function(pi,key) {
-    newPlayers.push(QQ.playerInfoArrayToObject(pi,key))
+  _.forEach(_.range(5), function(n) {
+    var newPlayers = []
+    _.forEach(JeopardyData[n].players, function(pi,key) {
+      newPlayers.push(QQ.playerInfoArrayToObject(pi,key))
+    })
+    //JeopardyData[n].playersOld = JeopardyData[n].players
+    JeopardyData[n].players = newPlayers
+    console.log('data'+n+'.players.length='+newPlayers.length)
+    QQ['data'+n] = JeopardyData[n]
   })
-  JeopardyData[5] = newPlayers
-  QQ.data0 = JeopardyData[0]
-  QQ.data0.players = newPlayers
-  QQ.data1 = JeopardyData[1]
-  QQ.data1.players = newPlayers
-  QQ.data2 = JeopardyData[2]
-  QQ.data2.players = newPlayers
-  QQ.data3 = JeopardyData[3]
-  QQ.data3.players = newPlayers
-  QQ.data4 = JeopardyData[4]
-  QQ.data4.players = newPlayers
-  console.log('JeopardyData', JeopardyData)
+  //console.log('JeopardyData', JeopardyData)
+  console.log('QQ', QQ)
 }
 
 //------------------------------------------------------------------------------

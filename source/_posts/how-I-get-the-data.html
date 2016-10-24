@@ -1,0 +1,45 @@
+---
+title: How I get the data
+date: 2016-10-01 11:21:42
+tags:
+- jeopardy
+- statistics
+---
+<p><b>Data source</b>
+The data used here are taken from the excellent Jeopardy site
+<a href="http://j-archive.com/">J! Archive</a>.
+You are encouraged to go look through that site.
+Without J! Archive, this site would not exist.
+They do the heavy listing of recording all the details of each Jeopardy game.
+I can't thank them enough for their diligent work.
+</p>
+
+<p><b>Missing data</b>
+J! Archive has records for all 33 seasons fo the Alex Trebeck era of Jeopardy!
+This includes 230 games per season for seasons 20-32 (2003-2016),
+228-230 games each for seasons (14-19) (1997-2003)
+and 198 games for season 13 (1996-1997)
+For the early seasons they have:
+1: 38 games, 2: 43 games, 3: 78 games, 4: 120 games, 5: 70 games,
+6: 151 games, 7: 51 games, 8: 47 games, 9: 63 games, 10: 49 games,
+11: 39 games, and 12: 76 games.
+So this data is a bit spotty.
+In addition, 123 of these games are missing both rounds and 10 are missing <thead>
+second (Double Jeopardy round).
+But this still leaves over 5000 Jeopardy games to do statistics over.
+</p>
+
+<p><b>Technical details</b>
+I collected the data by scraping the HTML from j-archive and converting it to
+a JSON file which the server reads in and uses to create the tables.
+Everything is written in JavaScript.
+Several node.js programs are used to collect and summarize the data.
+The code is on Github <a href="https://github.com/cpcrowley/jeopardyQuestions">here</a>.
+</p>
+
+<p>Extracting the data from the scaped HTML depends on the source site, that is,
+J! Archive, being consistent in how it encodes each game.
+Luckily they are very consistent and the extaction was not too hard.
+There are a few places where it was a little difficult to isolate the data I
+needed because there weren't enough distictive patterns around the data.
+</p>

@@ -6,8 +6,6 @@ menu:
   "Players": /players
   "Number of Games": /numberOfGames
   "Final Jeopardy": /finalJeopardy
-  "Seasons": /seasonsAndYears
-  "About": /about
 
 # Content
 rss: /atom.xml
